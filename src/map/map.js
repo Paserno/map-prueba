@@ -12,6 +12,7 @@ const lat = -37.0214519;
             hash: true
         });
 
+        
 
         map.on('load', () => {
             // Add a GeoJSON source with 3 points.
@@ -88,3 +89,13 @@ const lat = -37.0214519;
                 .setHTML(e.features[0].properties.name)
                 .addTo(map);
                 });
+
+                map.on('style.load', function() {
+                    map.on('click', function(e) {
+                      var coordinates = e.lngLat;
+                      new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML('Hiciste click en: <br/>' + coordinates)
+                        .addTo(map);
+                    });
+                  });
