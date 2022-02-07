@@ -19,7 +19,10 @@ En este punto se crearan las carpetas con los archivos, ademas de algunas instal
 Pasos a seguir:
 * Instalar __DOTENV__ para el manejo de variables globales.
 
+----
+### 2.- Mapbox
+Se agrego el mapa de MapBox y se crearon algunos archivos, para su almacenamiento.
 
-
+----
 
 
