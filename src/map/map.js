@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiMjVwYXNzZXIiLCJhIjoiY2t4MHNtNGh0MTB3dDJubHlrcHF2dnpmMiJ9.YQrtunF-GEy5DtzbsFweww';
 
-const long = -71.5209854;
+const long = -90.5209854;
 const lat = -37.0214519;
 
 
@@ -16,38 +16,38 @@ const lat = -37.0214519;
 
         map.on('load', () => {
             // Add a GeoJSON source with 3 points.
-            map.addSource('points', {
-            'type': 'geojson',
-            'data': {
-            'type': 'FeatureCollection',
-            'features': [
-            {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-            'type': 'Point',
-            'coordinates': [long, lat]
-            }
-            },
-            {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-            'type': 'Point',
-            'coordinates': [-90.3295, -0.6344]
-            }
-            },
-            {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-            'type': 'Point',
-            'coordinates': [-91.3403, 0.0164]
-            }
-            }
-            ]
-            }
-            });
+            // map.addSource('points', {
+            // 'type': 'geojson',
+            // 'data': {
+            // 'type': 'FeatureCollection',
+            // 'features': [
+            // {
+            // 'type': 'Feature',
+            // 'properties': {},
+            // 'geometry': {
+            // 'type': 'Point',
+            // 'coordinates': [long, lat]
+            // }
+            // },
+            // {
+            // 'type': 'Feature',
+            // 'properties': {},
+            // 'geometry': {
+            // 'type': 'Point',
+            // 'coordinates': [-90.3295, -0.6344]
+            // }
+            // },
+            // {
+            // 'type': 'Feature',
+            // 'properties': {},
+            // 'geometry': {
+            // 'type': 'Point',
+            // 'coordinates': [-91.3403, 0.0164]
+            // }
+            // }
+            // ]
+            // }
+            // });
 
 
             // Add a circle layer
@@ -67,7 +67,7 @@ const lat = -37.0214519;
             map.on('click', 'circle', (e) => {
             map.flyTo({
             center:  e.features[0].geometry.coordinates,
-            zoom: 17
+            zoom: 15
             });
             
             });
@@ -92,10 +92,12 @@ const lat = -37.0214519;
 
                 map.on('style.load', function() {
                     map.on('click', function(e) {
-                      var coordinates = e.lngLat;
+                      var coordinates = e.lngLat; 
                       new mapboxgl.Popup()
                         .setLngLat(coordinates)
-                        .setHTML('Hiciste click en: <br/>' + coordinates)
+                        .setHTML('Hiciste click en: <br/>' 
+                                  +'<b> Latitud: </b>'+ coordinates.lat + '<br/>'
+                                  +'<b> Longitud: </b>'+ coordinates.lng)
                         .addTo(map);
                     });
                   });
