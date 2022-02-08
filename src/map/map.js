@@ -50,18 +50,18 @@ const lat = -37.0214519;
             // });
 
 
-            // Add a circle layer
-            map.addLayer({
-            'id': 'circle',
-            'type': 'circle',
-            'source': 'points',
-            'paint': {
-            'circle-color': '#4264fb',
-            'circle-radius': 8,
-            'circle-stroke-width': 2,
-            'circle-stroke-color': '#ffffff'
-            }
-            });
+            // // Add a circle layer
+            // map.addLayer({
+            // 'id': 'circle',
+            // 'type': 'circle',
+            // 'source': 'points',
+            // 'paint': {
+            // 'circle-color': '#4264fb',
+            // 'circle-radius': 8,
+            // 'circle-stroke-width': 2,
+            // 'circle-stroke-color': '#ffffff'
+            // }
+            // });
              
             // Center the map on the coordinates of any clicked circle from the 'circle' layer.
             map.on('click', 'circle', (e) => {
@@ -99,5 +99,38 @@ const lat = -37.0214519;
                                   +'<b> Latitud: </b>'+ coordinates.lat + '<br/>'
                                   +'<b> Longitud: </b>'+ coordinates.lng)
                         .addTo(map);
+
+                        map.addSource('points', {
+                          'type': 'geojson',
+                          'data': {
+                          'type': 'FeatureCollection',
+                          'features': [
+                          {
+                          'type': 'Feature',
+                          'properties': {},
+                          'geometry': {
+                          'type': 'Point',
+                          'coordinates': [coordinates.lng, coordinates.lat]
+                          }
+                          }
+                          ]
+                          }
+                          });
+                          
+                          
+                      // Add a circle layer
+                      
+                      map.addLayer({
+                        'id': 'circle',
+                        'type': 'circle',
+                        'source': 'points',
+                        'paint': {
+                        'circle-color': '#4264fb',
+                        'circle-radius': 8,
+                        'circle-stroke-width': 2,
+                        'circle-stroke-color': '#ffffff'
+                        }
+                        });
+
                     });
                   });
